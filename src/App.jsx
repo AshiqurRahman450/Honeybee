@@ -248,9 +248,9 @@ export default function App() {
             </span>
           </div>
           <div className="topbar-items topbar-contact-row">
-            <a href="tel:+917845777423" className="topbar-item">
+            <a href="tel:+916380102305" className="topbar-item">
               <IconPhone size={13} />
-              <span>+91 78457 77423</span>
+              <span>+91 63801 02305 / 78457 77423</span>
             </a>
             <a href="mailto:abeal@honeybeefms.in" className="topbar-item">
               <IconMail size={13} />
@@ -296,12 +296,12 @@ export default function App() {
                   <IconArrowRight size={16} />
                 </a>
                 <a
-                  href="tel:+917845777423"
+                  href="tel:+916380102305"
                   className="btn btn-dark"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <IconPhone size={16} />
-                  <span>Call +91 78457 77423</span>
+                  <span>Call +91 63801 02305</span>
                 </a>
               </div>
               <div className="mobile-drawer-location">
@@ -312,7 +312,7 @@ export default function App() {
           </ul>
 
           <div className="nav-actions">
-            <a href="tel:+917845777423" className="mobile-quick-call" aria-label="Call Honeybee FMS">
+            <a href="tel:+916380102305" className="mobile-quick-call" aria-label="Call Honeybee FMS">
               <IconPhone size={18} />
             </a>
             <a href="#contact" className="btn btn-primary nav-cta-desktop">
@@ -332,13 +332,9 @@ export default function App() {
       </header>
 
       {/* ======================================================================
-          HERO SECTION WITH INTERACTIVE HONEYCOMB CANVAS & MULTI-PHOTO COLLAGE
+          HERO SECTION WITH PLAIN DARK BACKGROUND & MULTI-PHOTO COLLAGE
           ====================================================================== */}
       <section className="hero" id="home">
-        <HoneycombCanvas />
-        <div className="hero-glow-orb hero-glow-1" />
-        <div className="hero-glow-orb hero-glow-2" />
-
         <div className="container hero-grid">
           <div className="hero-content" data-reveal="left">
             <div className="hero-badge-pill">
@@ -365,9 +361,9 @@ export default function App() {
                 <IconCalculator size={16} />
                 <span>Instant Manpower Estimator</span>
               </a>
-              <a href="tel:+917845777423" className="btn btn-outline">
+              <a href="tel:+916380102305" className="btn btn-outline">
                 <IconPhone size={16} />
-                <span>Call +91 78457 77423</span>
+                <span>Call +91 63801 02305</span>
               </a>
             </div>
 
@@ -640,8 +636,8 @@ export default function App() {
               </div>
             </div>
             <div style={{ display: 'flex', gap: '12px', flexShrink: 0 }}>
-              <a href="tel:+917845777423" className="btn btn-outline">
-                Call 78457 77423
+              <a href="tel:+916380102305" className="btn btn-outline">
+                Call 63801 02305
               </a>
               <a href="#contact" className="btn btn-primary">
                 Bundle Services
@@ -1141,9 +1137,14 @@ export default function App() {
                   </div>
                   <div>
                     <div style={{ fontSize: '0.78rem', color: '#94a3b8' }}>24/7 Call &amp; WhatsApp Helpline</div>
-                    <a href="tel:+917845777423" style={{ color: '#fff', textDecoration: 'none' }}>
-                      <strong style={{ fontSize: '1.05rem' }}>+91 78457 77423</strong>
-                    </a>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                      <a href="tel:+916380102305" style={{ color: '#ffbe3d', textDecoration: 'none' }}>
+                        <strong style={{ fontSize: '1.1rem' }}>+91 63801 02305</strong>
+                      </a>
+                      <a href="tel:+917845777423" style={{ color: '#cbd5e1', textDecoration: 'none', fontSize: '0.92rem' }}>
+                        <span>+91 78457 77423</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
@@ -1250,7 +1251,7 @@ export default function App() {
                       type="tel"
                       id="clientPhone"
                       className="form-control"
-                      placeholder="+91 78457 77423"
+                      placeholder="+91 63801 02305"
                       required
                     />
                   </div>
@@ -1368,7 +1369,11 @@ export default function App() {
                 </span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <IconPhone size={15} />
-                  <a href="tel:+917845777423" style={{ color: '#ffbe3d', textDecoration: 'none' }}>+91 78457 77423</a>
+                  <span>
+                    <a href="tel:+916380102305" style={{ color: '#ffbe3d', textDecoration: 'none', fontWeight: 700 }}>+91 63801 02305</a>
+                    {' / '}
+                    <a href="tel:+917845777423" style={{ color: '#cbd5e1', textDecoration: 'none' }}>+91 78457 77423</a>
+                  </span>
                 </span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <IconMail size={15} />
@@ -1447,11 +1452,11 @@ export default function App() {
 
       {/* Floating WhatsApp Instant Connect Button */}
       <a
-        href="https://wa.me/917845777423?text=Hello%20Honeybee%20FMS,%20I%20would%20like%20a%20quote%20for%20Facility%20Management%20Services."
+        href="https://wa.me/916380102305?text=Hello%20Honeybee%20FMS,%20I%20would%20like%20a%20quote%20for%20Facility%20Management%20Services."
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-float"
-        title="Chat with Honeybee FMS on WhatsApp (+91 78457 77423)"
+        title="Chat with Honeybee FMS on WhatsApp (+91 63801 02305)"
       >
         <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z" />
