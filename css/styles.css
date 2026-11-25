@@ -1766,6 +1766,7 @@ body {
 .reviews-slider-track {
   display: flex;
   gap: 24px;
+  align-items: flex-start;
 }
 
 .testimonial-card {
@@ -1774,11 +1775,12 @@ body {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-lg);
-  padding: 26px;
+  padding: 22px;
   transition: transform 0.35s var(--ease-out), border-color 0.35s var(--ease-out), background 0.35s var(--ease-out);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  height: auto;
   position: relative;
 }
 
@@ -1827,8 +1829,8 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-top: 20px;
-  padding-top: 16px;
+  margin-top: 12px;
+  padding-top: 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
