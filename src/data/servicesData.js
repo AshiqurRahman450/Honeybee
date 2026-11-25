@@ -518,27 +518,69 @@ export const EQUIPMENT_DATA = [
 
 export const TESTIMONIALS_DATA = [
   {
+    id: 1,
+    author: "Aruna Rajendran",
+    initials: "AR",
+    role: "Carpet Cleaning Services • Ambattur, Chennai",
+    serviceTag: "Carpet & Sofa Cleaning",
+    accent: "#1589d6",
     quote:
-      "Honeybee FMS took over our 85,000 sq.ft. corporate office for Housekeeping, Carpet Shampooing, Security & Pest Control. Their staff grooming and SLA adherence are top-notch.",
-    author: "Vikram Menon",
-    role: "VP Administration, Horizon Tech Park",
-    siteImg: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=700&q=80",
-    avatarImg: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80"
+      "I am extremely satisfied with the carpet cleaning services @ambattur I received! The team did an outstanding job of deep cleaning my carpets, removing stubborn stains and leaving them looking like new. Their attention to detail, professionalism, and friendly service exceeded my expectations. My carpets have never looked or felt cleaner! I highly recommend this company to anyone seeking reliable and excellent carpet cleaning services",
+    siteImg: "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=700&q=80"
   },
   {
+    id: 2,
+    author: "Santhosh Thiru",
+    initials: "ST",
+    role: "Security & Surveillance • Verified Client",
+    serviceTag: "Security & Surveillance Services",
+    accent: "#1b5e37",
     quote:
-      "From lush gardening & landscaping to 24/7 plumbers, carpenters, security guards, and society asset accounting—Honeybee FMS transformed our 450-flat residential community.",
-    author: "Ananya Deshmukh",
-    role: "Secretary, Emerald Greens RWA",
-    siteImg: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=700&q=80",
-    avatarImg: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80"
+      "Excellent service and professional approach. The security team was very responsive and handled everything efficiently..",
+    siteImg: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=700&q=80"
   },
   {
+    id: 3,
+    author: "Rupak Ghosh",
+    initials: "RG",
+    role: "Restroom & Hygiene Care • Verified Client",
+    serviceTag: "House Keeping Services",
+    accent: "#1d63b8",
     quote:
-      "Their Civil & Alteration team renovated our cafeteria and washrooms over a single weekend, while their HR & Payroll team handles 120+ contract staff with 100% EPF/ESIC compliance.",
-    author: "Suresh Nair",
-    role: "Facility Director, Sterling Logistics",
-    siteImg: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=80",
-    avatarImg: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80"
+      "Working is clean and neat, she had done needle help in the restroom Ms Selvarani",
+    siteImg: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id: 4,
+    author: "Prakash Pannerselvam",
+    initials: "PP",
+    role: "Corporate Office Deep Cleaning • Verified Client",
+    serviceTag: "Office & House Deep Cleaning",
+    accent: "#148578",
+    quote:
+      "I recently had the pleasure of experiencing an outstanding office cleaning service, and I am delighted to share my glowing review. From start to finish, this cleaning company exceeded all my expectations and left our office space spotless",
+    siteImg: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id: 5,
+    author: "Yesu Doss",
+    initials: "YD",
+    role: "Corporate Housekeeping • Verified Client",
+    serviceTag: "House Keeping Services",
+    accent: "#1d63b8",
+    quote:
+      "The housekeeping service was top notch, team was pantual did a amazing job, our office looks neat and good.",
+    siteImg: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id: 6,
+    author: "Jayasankar Babu",
+    initials: "JB",
+    role: "Office Cleaning Services • Verified Client",
+    serviceTag: "Office & House Deep Cleaning",
+    accent: "#148578",
+    quote:
+      "Team has done a good job we are satisfied in there office cleaning",
+    siteImg: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=700&q=80"
   }
 ];

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   SERVICES_DATA,
   HOTSPOTS_DATA,
@@ -128,6 +128,67 @@ export default function App() {
     'Integrated Facility Management (All 10 Services)'
   );
   const [formSubmitted, setFormSubmitted] = useState(false);
+
+  // Swipeable Reviews Carousel State & Refs
+  const reviewsViewportRef = useRef(null);
+  const [activeReviewIndex, setActiveReviewIndex] = useState(0);
+  const [isDraggingReviews, setIsDraggingReviews] = useState(false);
+  const dragStateRef = useRef({ startX: 0, scrollLeft: 0 });
+
+  const scrollToReviewIndex = (index) => {
+    const viewport = reviewsViewportRef.current;
+    if (!viewport) return;
+    const total = TESTIMONIALS_DATA.length;
+    const clamped = ((index % total) + total) % total;
+    const card = viewport.querySelectorAll('.testimonial-card')[clamped];
+    if (card) {
+      viewport.scrollTo({
+        left: card.offsetLeft - viewport.offsetLeft,
+        behavior: 'smooth'
+      });
+    }
+    setActiveReviewIndex(clamped);
+  };
+
+  const handleReviewsScroll = () => {
+    const viewport = reviewsViewportRef.current;
+    if (!viewport) return;
+    const cards = viewport.querySelectorAll('.testimonial-card');
+    if (!cards.length) return;
+    const scrollPos = viewport.scrollLeft;
+    let closestIdx = 0;
+    let minDiff = Infinity;
+    cards.forEach((card, i) => {
+      const diff = Math.abs(card.offsetLeft - viewport.offsetLeft - scrollPos);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIdx = i;
+      }
+    });
+    setActiveReviewIndex(closestIdx);
+  };
+
+  const handleReviewsMouseDown = (e) => {
+    const viewport = reviewsViewportRef.current;
+    if (!viewport) return;
+    setIsDraggingReviews(true);
+    dragStateRef.current.startX = e.pageX - viewport.offsetLeft;
+    dragStateRef.current.scrollLeft = viewport.scrollLeft;
+  };
+
+  const handleReviewsMouseMove = (e) => {
+    if (!isDraggingReviews) return;
+    const viewport = reviewsViewportRef.current;
+    if (!viewport) return;
+    e.preventDefault();
+    const x = e.pageX - viewport.offsetLeft;
+    const walk = (x - dragStateRef.current.startX) * 1.3;
+    viewport.scrollLeft = dragStateRef.current.scrollLeft - walk;
+  };
+
+  const handleReviewsMouseUp = () => {
+    setIsDraggingReviews(false);
+  };
 
   // Scroll Progress + Scroll Reveal Observer
   useEffect(() => {
@@ -928,36 +989,94 @@ export default function App() {
       </section>
 
       {/* ======================================================================
-          CLIENT TESTIMONIALS WITH FACILITY PHOTOS
+          CLIENT TESTIMONIALS WITH SWIPE LEFT/RIGHT CAROUSEL
           ====================================================================== */}
-      <section className="section section-dark">
+      <section className="section section-dark" id="reviews">
         <div className="container">
-          <div className="section-header" data-reveal="up">
+          <div className="section-header" data-reveal="up" style={{ marginBottom: '34px' }}>
             <div className="section-eyebrow"><IconQuote size={15} /> CLIENT SUCCESS STORIES</div>
-            <h2 className="section-title">Trusted by Corporate Facilities &amp; Residential Communities</h2>
+            <h2 className="section-title">What Our Happy Clients Say About Honeybee FMS</h2>
             <p className="section-subtitle">
-              See why Admin Heads, Facility Directors, and RWA Committees rely on Honeybee FMS for single-window peace of mind.
+              Real feedback from clients across Chennai for our Carpet Cleaning, Office Cleaning, Housekeeping, Restroom Care, and Security Services.
             </p>
           </div>
 
-          <div className="testimonials-grid" data-reveal="up">
-            {TESTIMONIALS_DATA.map((t, idx) => (
-              <div key={idx} className="testimonial-card">
-                <div>
-                  <img className="testimonial-site-img" src={t.siteImg} alt={t.author} loading="lazy" />
-                  <IconFiveStars />
-                  <p style={{ color: '#e2e8f0', fontSize: '0.93rem', fontStyle: 'italic' }}>
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                </div>
-                <div className="testimonial-author">
-                  <img src={t.avatarImg} alt={t.author} loading="lazy" />
+          <div className="reviews-carousel-header-bar" data-reveal="up">
+            <div className="reviews-swipe-hint">
+              <IconMoveHorizontal size={16} />
+              <span>Swipe left or right to read all {TESTIMONIALS_DATA.length} client reviews</span>
+            </div>
+
+            <div className="reviews-nav-controls">
+              <span style={{ fontSize: '0.84rem', color: '#94a3b8', fontWeight: 700, marginRight: '4px' }}>
+                {activeReviewIndex + 1} / {TESTIMONIALS_DATA.length}
+              </span>
+              <button
+                type="button"
+                className="carousel-nav-btn"
+                onClick={() => scrollToReviewIndex(activeReviewIndex - 1)}
+                aria-label="Previous review"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M19 12H5" />
+                  <path d="m12 19-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                className="carousel-nav-btn"
+                onClick={() => scrollToReviewIndex(activeReviewIndex + 1)}
+                aria-label="Next review"
+              >
+                <IconArrowRight size={18} />
+              </button>
+            </div>
+          </div>
+
+          <div
+            ref={reviewsViewportRef}
+            className={`reviews-slider-viewport ${isDraggingReviews ? 'dragging' : ''}`}
+            onScroll={handleReviewsScroll}
+            onMouseDown={handleReviewsMouseDown}
+            onMouseMove={handleReviewsMouseMove}
+            onMouseUp={handleReviewsMouseUp}
+            onMouseLeave={handleReviewsMouseUp}
+            data-reveal="up"
+          >
+            <div className="reviews-slider-track">
+              {TESTIMONIALS_DATA.map((t) => (
+                <article key={t.id} className="testimonial-card">
                   <div>
-                    <strong style={{ color: '#fff', display: 'block', fontSize: '0.95rem' }}>{t.author}</strong>
-                    <span style={{ color: '#94a3b8', fontSize: '0.78rem' }}>{t.role}</span>
+                    <div className="testimonial-site-img-wrap">
+                      <img className="testimonial-site-img" src={t.siteImg} alt={t.serviceTag} loading="lazy" />
+                      <span className="testimonial-service-pill">{t.serviceTag}</span>
+                    </div>
+                    <IconFiveStars />
+                    <p style={{ color: '#e2e8f0', fontSize: '0.93rem', fontStyle: 'italic', lineHeight: 1.65 }}>
+                      &ldquo;{t.quote}&rdquo;
+                    </p>
                   </div>
-                </div>
-              </div>
+                  <div className="testimonial-author">
+                    <div className="testimonial-avatar-badge">{t.initials}</div>
+                    <div>
+                      <strong style={{ color: '#fff', display: 'block', fontSize: '0.98rem' }}>{t.author}</strong>
+                      <span style={{ color: '#94a3b8', fontSize: '0.78rem' }}>{t.role}</span>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="reviews-dots-row">
+            {TESTIMONIALS_DATA.map((t, idx) => (
+              <button
+                key={t.id}
+                type="button"
+                className={`review-dot ${activeReviewIndex === idx ? 'active' : ''}`}
+                onClick={() => scrollToReviewIndex(idx)}
+                aria-label={`View review by ${t.author}`}
+              />
             ))}
           </div>
         </div>
